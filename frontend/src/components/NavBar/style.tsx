@@ -22,9 +22,10 @@ export const NavigationList = styled.ul`
 export const NavigationItem = styled.li`
 	padding: 15px;
 
-	&:focus-within {
+	&.active {
 		border-right: 1px solid green;
 		color: green;
+		transition: border-right 1s ease;
 	}
 `;
 

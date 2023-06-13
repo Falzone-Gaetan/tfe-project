@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import {
 	Container,
 	NavigationIcon,
@@ -14,11 +14,18 @@ import {
 } from 'react-icons/ai';
 
 export const NavBar: FC = () => {
+	const [activeItem, setActiveItem] = useState<null | string>(null);
+
+	const handleItemClick = (item: string) => {
+		setActiveItem(item);
+	};
 	return (
 		<Container>
 			<NavigationList>
 				<NavigationItem>Menu</NavigationItem>
-				<NavigationItem>
+				<NavigationItem
+					className={activeItem === 'dashboard' ? 'active' : ''}
+					onClick={() => handleItemClick('dashboard')}>
 					<NavigationLink to='/dashboard'>
 						<NavigationIcon>
 							<AiOutlineDashboard />
@@ -26,7 +33,9 @@ export const NavBar: FC = () => {
 						Dashboard
 					</NavigationLink>
 				</NavigationItem>
-				<NavigationItem>
+				<NavigationItem
+					className={activeItem === 'myrecipes' ? 'active' : ''}
+					onClick={() => handleItemClick('myrecipes')}>
 					<NavigationLink to='/myrecipes'>
 						<NavigationIcon>
 							<AiOutlineFileText />
@@ -34,7 +43,9 @@ export const NavBar: FC = () => {
 						My Recipes
 					</NavigationLink>
 				</NavigationItem>
-				<NavigationItem>
+				<NavigationItem
+					className={activeItem === 'myaccount' ? 'active' : ''}
+					onClick={() => handleItemClick('myaccount')}>
 					<NavigationLink to='/myaccount'>
 						<NavigationIcon>
 							<AiOutlineUser />
@@ -42,7 +53,9 @@ export const NavBar: FC = () => {
 						Account
 					</NavigationLink>
 				</NavigationItem>
-				<NavigationItem>
+				<NavigationItem
+					className={activeItem === 'logout' ? 'active' : ''}
+					onClick={() => handleItemClick('logout')}>
 					<NavigationLink to='/logout'>
 						<NavigationIcon>
 							<AiOutlineLogout />
