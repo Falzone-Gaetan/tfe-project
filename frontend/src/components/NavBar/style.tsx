@@ -14,18 +14,15 @@ export const Container = styled.nav`
 
 export const NavigationList = styled.ul`
 	list-style-type: none;
-
 	justify-content: space-around;
-	padding: 0;
+	padding: 15px;
 `;
 
 export const NavigationItem = styled.li`
-	padding: 15px;
-
+	padding-bottom: 25px;
 	&.active {
-		border-right: 1px solid green;
+		border-right: 2px solid green;
 		color: green;
-		transition: border-right 1s ease;
 	}
 `;
 
@@ -33,7 +30,7 @@ export const NavigationLink = styled(Link)`
 	text-decoration: none;
 	color: #333;
 	font-weight: light;
-	padding: 5px;
+
 	transition: color 0.3s;
 
 	&:hover {
