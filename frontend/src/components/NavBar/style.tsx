@@ -6,37 +6,33 @@ export const Container = styled.nav`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
-	border-right: solid;
-	border-color: gray;
-	border-right-width: 1px;
+	height: 100%;
 `;
 
-export const NavigationList = styled.ul`
+export const NavigationList = styled.div`
 	list-style-type: none;
 	justify-content: space-around;
-	padding: 15px;
+	margin-top: 40px;
+	margin-left: 40px;
 `;
 
-export const NavigationItem = styled.li`
-	padding-bottom: 25px;
+export const NavigationItem = styled.div`
+	padding: 10px;
 	&.active {
 		border-right: 2px solid green;
-		color: green;
 	}
 `;
 
 export const NavigationLink = styled(Link)`
 	text-decoration: none;
-	color: #333;
+	color: #000;
 	font-weight: light;
-
-	transition: color 0.3s;
 
 	&:hover {
 		color: green;
 	}
-	&:focus-within {
+
+	&.active {
 		color: green;
 		font-weight: bold;
 	}

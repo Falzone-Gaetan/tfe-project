@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+export const Container = styled.div`
+	display: flex;
+	flex-direction: row;
 
+	height: 350px;
+`;
 export const ContainerImage = styled.div`
 	width: 100%;
 	flex: 5;
@@ -13,7 +18,7 @@ export const ResultImage = styled.img`
 	height: 100%;
 `;
 export const ContainerBookmark = styled.div`
-	background-color: red;
+	background-color: #e8f7ed;
 	width: 100%;
 	flex: 1;
 	margin: 20px;

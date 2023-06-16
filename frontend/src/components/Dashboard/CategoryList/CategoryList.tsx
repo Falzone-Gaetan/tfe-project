@@ -1,48 +1,84 @@
 import React, { FC } from 'react';
 import {
-	Container,
+	CategoryIcon,
+	CategoryTitle,
 	ContainerList,
 	H2SubTitle,
 	LinkItem,
 	ListItem,
 } from './style';
+import { AiOutlineFileText } from 'react-icons/ai';
 
 export const CategoryList: FC = () => {
 	return (
-		<Container>
+		<>
 			<H2SubTitle>Categories</H2SubTitle>
 			<ContainerList>
-				<LinkItem to='/myrecipes'>
-					<ListItem>Snack</ListItem>
-				</LinkItem>
-				<LinkItem to='/myrecipes'>
-					<ListItem>Snack</ListItem>
-				</LinkItem>
-				<LinkItem to='/myrecipes'>
-					<ListItem>Snack</ListItem>
-				</LinkItem>
-				<LinkItem to='/Myrecipes'>
-					<ListItem>Snack</ListItem>
-				</LinkItem>
-				<LinkItem to='/myrecipes'>
-					<ListItem>Snack</ListItem>
-				</LinkItem>
-				<LinkItem to='/myrecipes'>
-					<ListItem>Snack</ListItem>
-				</LinkItem>
-
-				<LinkItem to='/myrecipes'>
-					<ListItem>Snack</ListItem>
-				</LinkItem>
-
-				<LinkItem to='/myrecipes'>
-					<ListItem>Snack</ListItem>
-				</LinkItem>
-
-				<LinkItem to='/myrecipes'>
-					<ListItem>Snack</ListItem>
-				</LinkItem>
+				<ListItem>
+					<LinkItem to='/myrecipes'>
+						<CategoryIcon>
+							<AiOutlineFileText />
+						</CategoryIcon>
+						<CategoryTitle>Snack</CategoryTitle>
+					</LinkItem>
+				</ListItem>
+				<ListItem>
+					<LinkItem to='/myrecipes'>
+						<CategoryIcon>
+							<AiOutlineFileText />
+						</CategoryIcon>
+						Snack
+					</LinkItem>
+				</ListItem>
+				<ListItem>
+					<LinkItem to='/myrecipes'>
+						<CategoryIcon>
+							<AiOutlineFileText />
+						</CategoryIcon>
+						Snack
+					</LinkItem>
+				</ListItem>
+				<ListItem>
+					<LinkItem to='/myrecipes'>
+						<CategoryIcon>
+							<AiOutlineFileText />
+						</CategoryIcon>
+						Snack
+					</LinkItem>
+				</ListItem>
+				<ListItem>
+					<LinkItem to='/myrecipes'>
+						<CategoryIcon>
+							<AiOutlineFileText />
+						</CategoryIcon>
+						Snack
+					</LinkItem>
+				</ListItem>
+				<ListItem>
+					<LinkItem to='/myrecipes'>
+						<CategoryIcon>
+							<AiOutlineFileText />
+						</CategoryIcon>
+						Snack
+					</LinkItem>
+				</ListItem>
+				<ListItem>
+					<LinkItem to='/myrecipes'>
+						<CategoryIcon>
+							<AiOutlineFileText />
+						</CategoryIcon>
+						Snack
+					</LinkItem>
+				</ListItem>
+				<ListItem>
+					<LinkItem to='/myrecipes'>
+						<CategoryIcon>
+							<AiOutlineFileText />
+						</CategoryIcon>
+						Snack
+					</LinkItem>
+				</ListItem>
 			</ContainerList>
-		</Container>
+		</>
 	);
 };

@@ -6,8 +6,10 @@ import {
 	ResultImage,
 	TimesRecipes,
 	TitleRecipes,
+	Container,
 } from './style';
 import { Box, Icon } from '@mui/material';
+
 interface RecipesRandomProps {
 	title: string;
 	image: string;
@@ -20,9 +22,7 @@ export const RecipesOfTheDay: FC<RecipesRandomProps> = ({
 	times,
 }) => {
 	return (
-		<Box
-			height='300px'
-			display={'flex'}>
+		<Container>
 			<ContainerImage>
 				<TitleRecipes>{title}</TitleRecipes>
 				<ResultImage src={image}></ResultImage>
@@ -33,6 +33,6 @@ export const RecipesOfTheDay: FC<RecipesRandomProps> = ({
 				<Box p={4}> You have 3 new recipes in your bookmark</Box>
 				<LinkBookmark to='/myrecipes'>See Bookmark</LinkBookmark>
 			</ContainerBookmark>
-		</Box>
+		</Container>
 	);
 };

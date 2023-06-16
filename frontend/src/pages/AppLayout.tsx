@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Grid } from '@mui/material';
+
 import { NavBar, Header, Dashboard } from '../components';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { Container, MainContent, Sidebar } from './style';
 
 export const AppLayout = () => {
 	const location = useLocation();
@@ -24,48 +25,41 @@ export const AppLayout = () => {
 				pageTitle = 'Log Out';
 				break;
 			default:
-				pageTitle = 'Recipes';
+				pageTitle = 'Dashboard';
 		}
 
 		setPageTitle(pageTitle);
-		document.title = `My App - ${pageTitle}`;
+		document.title = `KitchenMate - ${pageTitle}`;
 	}, [location.pathname]);
 	return (
-		<Grid container>
-			{/* Navigation latérale à gauche */}
-
-			<Grid
-				item
-				xs={2}>
+		<Container>
+			<Sidebar>
+				{/* Contenu de la barre latérale */}
 				<NavBar />
-			</Grid>
-
-			<Grid
-				item
-				xs={10}>
-				<Grid
-					container
-					direction='column'>
-					{/* Navigation supérieure */}
-					<Grid item>
-						{/* Contenu de la navigation supérieure */}
-						<Header
-							pageTitle={pageTitle}
-							usersName='Gaetan'
-						/>
-					</Grid>
-					{/* Composant principal au milieu */}
-					<Grid item>
-						<Routes>
-							<Route
-								path='/dashboard'
-								element={<Dashboard />}
+			</Sidebar>
+			<MainContent>
+				{/* Contenu principal */}
+				<Header
+					pageTitle={pageTitle}
+					usersName='Gaetan'
+				/>
+				<Routes>
+					<Route
+						path='/'
+						element={
+							<Navigate
+								to='/dashboard'
+								replace
 							/>
-						</Routes>
-					</Grid>
-				</Grid>
-			</Grid>
-		</Grid>
+						}
+					/>
+					<Route
+						path='/dashboard'
+						element={<Dashboard />}
+					/>
+				</Routes>
+			</MainContent>
+		</Container>
 	);
 };
 

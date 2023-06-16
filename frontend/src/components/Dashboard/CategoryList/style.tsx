@@ -1,45 +1,58 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-export const Container = styled.div`
-	padding: 20px;
-`;
-export const ContainerList = styled.ul`
+
+export const ContainerList = styled.div`
 	list-style-type: none;
-	justify-content: space-between;
 	display: flex;
-	padding: 0;
-	overflow: hidden;
+	padding: 20px;
+	justify-content: space-between;
 `;
+
 export const LinkItem = styled(Link)`
-	display: inline-block;
-	width: 100%;
-	height: 100%;
 	text-decoration: none;
 	color: black;
-`;
-export const ListItem = styled.li`
-	margin-top: 10px;
-	margin-right: 25px;
-	border: 1px solid;
-	border-radius: 3px;
-	border-color: gray;
-	height: 150px;
-	width: 150px;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
 	&:hover {
-		background-color: green;
+		background-color: #2dc46b;
 		border: none;
 		margin-top: 0px;
-		box-shadow: 5px 5px 5px black;
+		box-shadow: 10px 10px 20px black;
 		color: #ffffff;
+		border-radius: 3px;
 	}
 	&:focus {
-		background-color: green;
+		background-color: #2dc46b;
 		color: #ffffff;
+	}
+`;
+export const ListItem = styled.div`
+	border: 2px solid;
+	border-radius: 3px;
+	border-color: #f7f8fa;
+	height: 150px;
+	width: 150px;
+	margin-top: 15px;
+	&:hover {
+		margin-top: 0px;
 	}
 `;
 export const H2SubTitle = styled.h2`
 	font-weight: bold;
 	font-size: xxl;
-	margin-top: 15px;
+
 	margin-bottom: 0;
+	padding: 20px;
+`;
+export const CategoryIcon = styled.span`
+	display: block;
+	margin-left: 20px;
+`;
+export const CategoryTitle = styled.span`
+	display: block;
+	margin-left: 20px;
 `;

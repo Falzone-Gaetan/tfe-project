@@ -2,14 +2,11 @@ import styled from 'styled-components';
 
 export const ContainerHeader = styled.div`
 	background-color: #ffffff;
-	border-bottom: solid;
-	border-color: gray;
-	border-bottom-width: thin;
-	height: 250px;
+
+	height: 230px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
 `;
 export const TitleContainer = styled.div`
 	display: flex;
@@ -28,4 +25,9 @@ export const TitleUser = styled.h2`
 	color: black;
 	padding-left: 20px;
 	margin: 0;
+`;
+export const Separator = styled.div`
+	height: 1px;
+	background-color: #f7f8fa;
+	margin: 10px 0px;
 `;
