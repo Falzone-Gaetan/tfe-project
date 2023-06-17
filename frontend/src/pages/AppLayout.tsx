@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { NavBar, Header, Dashboard } from '../components';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { Container, MainContent, Sidebar } from './style';
+import { ComponentContent, Container, MainContent, Sidebar } from './style';
 
 export const AppLayout = () => {
 	const location = useLocation();
@@ -43,21 +43,23 @@ export const AppLayout = () => {
 					pageTitle={pageTitle}
 					usersName='Gaetan'
 				/>
-				<Routes>
-					<Route
-						path='/'
-						element={
-							<Navigate
-								to='/dashboard'
-								replace
-							/>
-						}
-					/>
-					<Route
-						path='/dashboard'
-						element={<Dashboard />}
-					/>
-				</Routes>
+				<ComponentContent>
+					<Routes>
+						<Route
+							path='/'
+							element={
+								<Navigate
+									to='/dashboard'
+									replace
+								/>
+							}
+						/>
+						<Route
+							path='/dashboard'
+							element={<Dashboard />}
+						/>
+					</Routes>
+				</ComponentContent>
 			</MainContent>
 		</Container>
 	);

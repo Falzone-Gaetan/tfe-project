@@ -4,7 +4,7 @@ export const ContainerListSuggested = styled.div`
 	display: flex;
 	justify-content: space-between;
 	list-style-type: none;
-	padding: 20px;
+
 	gap: 20px 0px;
 `;
 
@@ -41,7 +41,31 @@ export const TimesRecipes = styled.span`
 export const H2SubTitle = styled.h2`
 	font-weight: bold;
 	font-size: xxl;
+`;
+export const Container = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
+export const PaginationContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 16px;
+`;
 
-	margin-bottom: 0;
-	padding: 20px;
+export const PaginationButton = styled.button`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	background-color: transparent;
+	color: #000;
+	font-size: 16px;
+	padding: 8px;
+	cursor: pointer;
+	outline: none;
+
+	&:hover {
+		background-color: #f0f0f0;
+	}
 `;

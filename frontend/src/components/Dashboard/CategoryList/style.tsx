@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const ContainerList = styled.div`
 	list-style-type: none;
 	display: flex;
-	padding: 20px;
+
 	justify-content: space-between;
 `;
 
@@ -44,9 +44,6 @@ export const ListItem = styled.div`
 export const H2SubTitle = styled.h2`
 	font-weight: bold;
 	font-size: xxl;
-
-	margin-bottom: 0;
-	padding: 20px;
 `;
 export const CategoryIcon = styled.span`
 	display: block;

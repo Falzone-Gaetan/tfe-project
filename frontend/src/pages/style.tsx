@@ -11,3 +11,6 @@ export const Sidebar = styled.div`
 export const MainContent = styled.div`
 	width: 80%;
 `;
+export const ComponentContent = styled.div`
+	padding: 36px;
+`;

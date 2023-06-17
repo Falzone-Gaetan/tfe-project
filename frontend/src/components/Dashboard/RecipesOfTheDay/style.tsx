@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	display: flex;
 	flex-direction: row;
-
-	height: 350px;
+	height: 320px;
+	gap: 30px;
 `;
 export const ContainerImage = styled.div`
 	width: 100%;
 	flex: 5;
-	margin: 20px;
+
 	height: 100%;
 	position: relative;
 `;
@@ -21,7 +21,7 @@ export const ContainerBookmark = styled.div`
 	background-color: #e8f7ed;
 	width: 100%;
 	flex: 1;
-	margin: 20px;
+
 	height: 100%;
 	display: flex;
 	flex-direction: column;
