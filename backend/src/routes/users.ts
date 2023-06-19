@@ -2,7 +2,7 @@ import express from 'express';
 import { Request, Response } from 'express';
 import { Connection, RowDataPacket } from 'mysql2/promise';
 
-const userRoutes = (connection: any, bcrypt: any) => {
+const userRoutes = (connection: Connection, bcrypt: any) => {
 	const router = express.Router();
 	// Route pour récupérer tous les utilisateurs
 	router.get('/', async (req: Request, res: Response) => {
@@ -32,6 +32,7 @@ const userRoutes = (connection: any, bcrypt: any) => {
 			if (existingUser.length > 0) {
 				return res
 					.status(409)
+
 					.json({ message: "Nom d'utilisateur déjà utilisé" });
 			}
 
