@@ -10,11 +10,7 @@ export const Dashboard: FC = () => {
 	console.log('DEBUG', data);
 	return (
 		<Container>
-			<RecipesOfTheDay
-				title={'Chicken'}
-				image={'https://picsum.photos/200'}
-				times={25}
-			/>
+			<RecipesOfTheDay />
 			<CategoryList />
 			<SuggestedRecipes />
 		</Container>

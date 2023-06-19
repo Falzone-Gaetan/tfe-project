@@ -20,7 +20,7 @@ export const Header: FC<HeaderProps> = ({ pageTitle, usersName }) => {
 					<TitleUser>Hello {usersName},</TitleUser>
 					<Title>{pageTitle}</Title>
 				</TitleContainer>
-				<SearchBar />
+				{pageTitle === 'Dashboard' && <SearchBar />}
 			</ContainerHeader>
 			<Separator />
 		</>

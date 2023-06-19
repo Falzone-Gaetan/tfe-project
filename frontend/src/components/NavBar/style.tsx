@@ -17,17 +17,18 @@ export const NavigationList = styled.div`
 `;
 
 export const NavigationItem = styled.div`
-	padding: 10px;
 	&.active {
 		border-right: 2px solid green;
 	}
 `;
 
 export const NavigationLink = styled(Link)`
+	display: inline-block;
 	text-decoration: none;
+	padding: 10px;
 	color: #000;
 	font-weight: light;
-
+	width: 100%;
 	&:hover {
 		color: green;
 	}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { NavBar, Header, Dashboard } from '../components';
+import { NavBar, Header, Dashboard, Bookmark } from '../components';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { ComponentContent, Container, MainContent, Sidebar } from './style';
 
@@ -57,6 +57,10 @@ export const AppLayout = () => {
 						<Route
 							path='/dashboard'
 							element={<Dashboard />}
+						/>
+						<Route
+							path='/myrecipes'
+							element={<Bookmark />}
 						/>
 					</Routes>
 				</ComponentContent>

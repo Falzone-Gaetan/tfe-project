@@ -11,17 +11,7 @@ import {
 import { Box, Icon } from '@mui/material';
 import { useGetRandomRecipesQuery } from '../../../store/api';
 
-interface RecipesRandomProps {
-	title: string;
-	image: string;
-	times: number;
-}
-
-export const RecipesOfTheDay: FC<RecipesRandomProps> = ({
-	title,
-	image,
-	times,
-}) => {
+export const RecipesOfTheDay: FC = () => {
 	const { data: random } = useGetRandomRecipesQuery('random');
 
 	if (!random) {
