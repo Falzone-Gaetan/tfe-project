@@ -19,7 +19,7 @@ export const NavBar: FC = () => {
 	const [activeItem, setActiveItem] = useState<null | string>(null);
 	useEffect(() => {
 		// Vérifier si l'emplacement actuel correspond à la page d'accueil
-		if (location.pathname === '/') {
+		if (location.pathname === '/Home/dashboard') {
 			setActiveItem('dashboard'); // Définir l'élément actif sur le Dashboard
 		}
 	}, [location.pathname]);
@@ -33,10 +33,12 @@ export const NavBar: FC = () => {
 				<NavigationItem>Menu</NavigationItem>
 				<NavigationItem
 					className={activeItem === 'dashboard' ? 'active' : ''}
-					onClick={() => handleItemClick('dashboard')}>
+					onClick={() => handleItemClick('dashboard')}
+				>
 					<NavigationLink
-						to='/dashboard'
-						className={activeItem === 'dashboard' ? 'active' : ''}>
+						to='/Home/dashboard'
+						className={activeItem === 'dashboard' ? 'active' : ''}
+					>
 						<NavigationIcon>
 							<AiOutlineDashboard />
 						</NavigationIcon>
@@ -45,10 +47,12 @@ export const NavBar: FC = () => {
 				</NavigationItem>
 				<NavigationItem
 					className={activeItem === 'myrecipes' ? 'active' : ''}
-					onClick={() => handleItemClick('myrecipes')}>
+					onClick={() => handleItemClick('myrecipes')}
+				>
 					<NavigationLink
-						to='/myrecipes'
-						className={activeItem === 'myrecipes' ? 'active' : ''}>
+						to='/Home/myrecipes'
+						className={activeItem === 'myrecipes' ? 'active' : ''}
+					>
 						<NavigationIcon>
 							<AiOutlineFileText />
 						</NavigationIcon>
@@ -57,10 +61,12 @@ export const NavBar: FC = () => {
 				</NavigationItem>
 				<NavigationItem
 					className={activeItem === 'myaccount' ? 'active' : ''}
-					onClick={() => handleItemClick('myaccount')}>
+					onClick={() => handleItemClick('myaccount')}
+				>
 					<NavigationLink
-						to='/myaccount'
-						className={activeItem === 'myaccount' ? 'active' : ''}>
+						to='/Home/myaccount'
+						className={activeItem === 'myaccount' ? 'active' : ''}
+					>
 						<NavigationIcon>
 							<AiOutlineUser />
 						</NavigationIcon>
@@ -69,10 +75,12 @@ export const NavBar: FC = () => {
 				</NavigationItem>
 				<NavigationItem
 					className={activeItem === 'logout' ? 'active' : ''}
-					onClick={() => handleItemClick('logout')}>
+					onClick={() => handleItemClick('logout')}
+				>
 					<NavigationLink
 						to='/logout'
-						className={activeItem === 'logout' ? 'active' : ''}>
+						className={activeItem === 'logout' ? 'active' : ''}
+					>
 						<NavigationIcon>
 							<AiOutlineLogout />
 						</NavigationIcon>

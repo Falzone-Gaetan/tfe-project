@@ -9,7 +9,7 @@ import {
 	Container,
 } from './style';
 import { Box, Icon } from '@mui/material';
-import { useGetRandomRecipesQuery } from '../../../store/api';
+import { useGetRandomRecipesQuery } from '../../../store/spoonacular';
 
 export const RecipesOfTheDay: FC = () => {
 	const { data: random } = useGetRandomRecipesQuery('random');

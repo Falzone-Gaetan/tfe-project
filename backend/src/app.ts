@@ -5,18 +5,20 @@ import userRoutes from './routes/users';
 import dotenv from 'dotenv';
 import mysql, { Connection } from 'mysql2/promise';
 import bcrypt from 'bcrypt';
+import favoritesRoutes from './routes/favorites';
 
 const app = express();
 app.use(bodyParser.json());
 
 dotenv.config();
+const cors = require('cors');
 
 const dbConfig = {
 	host: process.env.DB_HOST || 'localhost',
 	port: parseInt(process.env.DB_PORT || '3306', 10),
 	user: process.env.DB_USER || 'root',
-	password: process.env.DB_PASSWORD || '',
-	database: process.env.DB_DATABASE || 'mydatabase',
+	password: process.env.DB_PASSWORD || 'root',
+	database: process.env.DB_DATABASE || 'kitchenmate',
 };
 
 (async () => {
@@ -26,23 +28,20 @@ const dbConfig = {
 		console.log('Connexion à la base de données réussie');
 
 		// Middleware pour gérer les erreurs de type pour CORS
-		app.use((req: Request, res: Response, next: NextFunction) => {
-			res.header('Access-Control-Allow-Origin', '*');
-			res.header(
-				'Access-Control-Allow-Headers',
-				'Origin, X-Requested-With, Content-Type, Accept'
-			);
-			next();
-		});
 
+		app.use(
+			cors({
+				origin: 'http://localhost:3000',
+			})
+		);
 		// Routes utilisateur
 		app.use('/api/users', userRoutes(connection, bcrypt));
-
+		app.use('/api/favorites', favoritesRoutes(connection));
 		app.get('/', (req: Request, res: Response) => {
 			res.send("Bienvenue sur l'API de gestion des utilisateurs !");
 		});
 
-		const port = process.env.PORT || 3000;
+		const port = process.env.PORT || 3001;
 
 		app.listen(port, () => {
 			console.log(`Le serveur écoute sur le port ${port}`);

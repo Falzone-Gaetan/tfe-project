@@ -39,29 +39,15 @@ export const AppLayout = () => {
 			</Sidebar>
 			<MainContent>
 				{/* Contenu principal */}
-				<Header
-					pageTitle={pageTitle}
-					usersName='Gaetan'
-				/>
+				<Header pageTitle={pageTitle} usersName='Gaetan' />
 				<ComponentContent>
 					<Routes>
 						<Route
 							path='/'
-							element={
-								<Navigate
-									to='/dashboard'
-									replace
-								/>
-							}
+							element={<Navigate to='/Home/dashboard' replace />}
 						/>
-						<Route
-							path='/dashboard'
-							element={<Dashboard />}
-						/>
-						<Route
-							path='/myrecipes'
-							element={<Bookmark />}
-						/>
+						<Route path='/dashboard' element={<Dashboard />} />
+						<Route path='/myrecipes' element={<Bookmark />} />
 					</Routes>
 				</ComponentContent>
 			</MainContent>

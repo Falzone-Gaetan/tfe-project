@@ -3,11 +3,11 @@ import { Container } from './style';
 import { RecipesOfTheDay } from './RecipesOfTheDay/RecipesOfTheDay';
 import { CategoryList } from './CategoryList/CategoryList';
 import { SuggestedRecipes } from './SuggestedRecipes/SuggestedRecipes';
-import { useGetRecipesCategoryQuery } from '../../store/api';
+import { useGetRecipesCategoryQuery } from '../../store/spoonacular';
 
 export const Dashboard: FC = () => {
-	const { data } = useGetRecipesCategoryQuery('main course');
-	console.log('DEBUG', data);
+	const { data } = useGetRecipesCategoryQuery('');
+
 	return (
 		<Container>
 			<RecipesOfTheDay />

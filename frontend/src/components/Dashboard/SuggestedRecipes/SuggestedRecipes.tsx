@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import {
 	Container,
 	ContainerListSuggested,
@@ -17,12 +17,11 @@ import { Icon } from '@mui/material';
 
 import { AiOutlineDashboard } from 'react-icons/ai';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import { useGetSimilarRecipesQuery } from '../../../store/api';
+import { useGetSimilarRecipesQuery } from '../../../store/spoonacular';
 
 export const SuggestedRecipes: FC = () => {
 	const { data } = useGetSimilarRecipesQuery(715538);
 
-	console.log(data);
 	const itemsPerPage = 4;
 	const [currentPage, setCurrentPage] = useState(1);
 	if (!data) {
@@ -53,12 +52,14 @@ export const SuggestedRecipes: FC = () => {
 				<PaginationContainer>
 					<PaginationButton
 						onClick={handleClickPrevious}
-						disabled={currentPage === 1}>
+						disabled={currentPage === 1}
+					>
 						<MdChevronLeft />
 					</PaginationButton>
 					<PaginationButton
 						onClick={handleClickNext}
-						disabled={currentPage === totalPages}>
+						disabled={currentPage === totalPages}
+					>
 						<MdChevronRight />
 					</PaginationButton>
 				</PaginationContainer>

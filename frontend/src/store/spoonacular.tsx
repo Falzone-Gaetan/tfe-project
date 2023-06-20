@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // Créer une instance de l'API
 export const api = createApi({
-	reducerPath: 'api',
+	reducerPath: 'spoonacularApi',
 	baseQuery: fetchBaseQuery({
 		baseUrl: 'https://api.spoonacular.com/recipes',
 		prepareHeaders: (headers) => {

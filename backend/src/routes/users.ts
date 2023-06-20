@@ -2,7 +2,7 @@ import express from 'express';
 import { Request, Response } from 'express';
 import { Connection, RowDataPacket } from 'mysql2/promise';
 
-const userRoutes = (connection: Connection, bcrypt: any) => {
+const userRoutes = (connection, bcrypt: any) => {
 	const router = express.Router();
 	// Route pour récupérer tous les utilisateurs
 	router.get('/', async (req: Request, res: Response) => {
@@ -22,17 +22,15 @@ const userRoutes = (connection: Connection, bcrypt: any) => {
 	router.post('/register', async (req: Request, res: Response) => {
 		try {
 			const { name, password, email } = req.body;
-			const connection: Connection = req.app.locals.connection;
 
 			// Vérifier si l'utilisateur existe déjà dans la base de données
-			const [existingUser] = await connection.execute<RowDataPacket[]>(
-				'SELECT * FROM users WHERE username = ?',
+			const [existingUser] = await connection.execute(
+				'SELECT * FROM users WHERE name = ?',
 				[name]
 			);
 			if (existingUser.length > 0) {
 				return res
 					.status(409)
-
 					.json({ message: "Nom d'utilisateur déjà utilisé" });
 			}
 
@@ -45,7 +43,9 @@ const userRoutes = (connection: Connection, bcrypt: any) => {
 				[name, hashedPassword, email]
 			);
 
-			return res.status(201).json({ message: 'Utilisateur créé avec succès' });
+			return res
+				.status(201)
+				.json({ message: 'Utilisateur créé avec succès', name });
 		} catch (error) {
 			console.error("Erreur lors de la création de l'utilisateur :", error);
 			return res.status(500).json({ message: 'Erreur serveur' });
@@ -55,17 +55,20 @@ const userRoutes = (connection: Connection, bcrypt: any) => {
 	// Route de connexion de l'utilisateur
 	router.post('/login', async (req: Request, res: Response) => {
 		try {
-			const { username, password } = req.body;
-			const connection: Connection = req.app.locals.connection;
-
+			const { name, password, email } = req.body;
+			if (!name || !password || !email) {
+				return res
+					.status(400)
+					.json({ message: 'Username and password are required' });
+			}
 			// Récupérer l'utilisateur depuis la base de données
 			const [rows] = await connection.execute(
 				'SELECT * FROM users WHERE name = ?',
-				[username]
+				[name]
 			);
 
 			// Vérifier si l'utilisateur existe
-			if (!rows) {
+			if (!rows || rows.length === 0) {
 				return res
 					.status(401)
 					.json({ message: "Nom d'utilisateur ou mot de passe incorrect" });
@@ -80,7 +83,7 @@ const userRoutes = (connection: Connection, bcrypt: any) => {
 					.json({ message: "Nom d'utilisateur ou mot de passe incorrect" });
 			}
 
-			return res.status(200).json({ message: 'Connexion réussie' });
+			return res.status(200).json({ message: 'Connexion réussie', name });
 		} catch (error) {
 			console.error("Erreur lors de la connexion de l'utilisateur :", error);
 			return res.status(500).json({ message: 'Erreur serveur' });
@@ -118,7 +121,6 @@ const userRoutes = (connection: Connection, bcrypt: any) => {
 	router.put('/password', async (req: Request, res: Response) => {
 		try {
 			const { username, currentPassword, newPassword } = req.body;
-			const connection: Connection = req.app.locals.connection;
 
 			// Récupérer l'utilisateur depuis la base de données
 			const [rows] = await connection.execute(
@@ -165,7 +167,6 @@ const userRoutes = (connection: Connection, bcrypt: any) => {
 	router.delete('/:userId', async (req: Request, res: Response) => {
 		try {
 			const userId = req.params.userId;
-			const connection: Connection = req.app.locals.connection;
 
 			// Vérifier si l'utilisateur existe
 			const [rows] = await connection.execute(

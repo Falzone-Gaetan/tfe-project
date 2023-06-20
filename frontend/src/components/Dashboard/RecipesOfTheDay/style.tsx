@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	display: flex;
 	flex-direction: row;
-	height: 320px;
+	height: 310px;
 	gap: 30px;
 `;
 export const ContainerImage = styled.div`
 	width: 100%;
 	flex: 5;
-
+	object-fit: cover;
 	height: 100%;
 	position: relative;
 `;

@@ -1,14 +1,17 @@
-// store.js
-
 import { configureStore } from '@reduxjs/toolkit';
-import { api } from './api';
+import { api as spoonacularApi } from './spoonacular';
+import { api as loginApi } from './login'; // Importez votre nouvelle API de connexion
 
 const store = configureStore({
 	reducer: {
-		[api.reducerPath]: api.reducer,
+		[spoonacularApi.reducerPath]: spoonacularApi.reducer,
+		[loginApi.reducerPath]: loginApi.reducer,
 	},
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(api.middleware),
+	middleware: (getDefaultMiddleware) => [
+		...getDefaultMiddleware(),
+		spoonacularApi.middleware,
+		loginApi.middleware,
+	],
 });
 
 export default store;
