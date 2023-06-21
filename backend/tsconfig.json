@@ -7,6 +7,6 @@
 		"sourceMap": true,
 		"outDir": "dist"
 	},
-	"include": ["src"],
+	"include": ["models.ts"],
 	"exclude": ["node_modules"]
 }

@@ -9,12 +9,12 @@ import favoritesRoutes from './routes/favorites';
 const express = require('express');
 const app = express();
 app.use(bodyParser.json());
-
 dotenv.config();
+
 const cors = require('cors');
 
 const dbConfig = {
-	host: process.env.DB_HOST || 'localhost',
+	host: process.env.DB_HOST,
 	port: parseInt(process.env.DB_PORT || '3306', 10),
 	user: process.env.DB_USER || 'root',
 	password: process.env.DB_PASSWORD || 'root',
