@@ -1,12 +1,12 @@
-import express from 'express';
 import bodyParser from 'body-parser';
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import userRoutes from './routes/users';
 import dotenv from 'dotenv';
-import mysql, { Connection } from 'mysql2/promise';
+import mysql from 'mysql2/promise';
 import bcrypt from 'bcrypt';
 import favoritesRoutes from './routes/favorites';
 
+const express = require('express');
 const app = express();
 app.use(bodyParser.json());
 

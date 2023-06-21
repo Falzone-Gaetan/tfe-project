@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import {
 	Container,
 	ContainerListSuggested,
@@ -17,15 +17,21 @@ import { Icon } from '@mui/material';
 
 import { AiOutlineDashboard } from 'react-icons/ai';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import { useGetSimilarRecipesQuery } from '../../../store/spoonacular';
+import {
+	useGetRecipesInformationQuery,
+	useGetRecipesSummaryQuery,
+	useGetSimilarRecipesQuery,
+} from '../../../store/spoonacular';
 
 export const SuggestedRecipes: FC = () => {
-	const { data } = useGetSimilarRecipesQuery(715538);
-
+	const { data } = useGetSimilarRecipesQuery({ recipeId: 715538 });
+	const [recipesId, setRecipesId] = useState(715538);
+	const { data: information } = useGetRecipesInformationQuery(recipesId);
+	const { data: summary } = useGetRecipesSummaryQuery(recipesId);
 	const itemsPerPage = 4;
 	const [currentPage, setCurrentPage] = useState(1);
 	if (!data) {
-		return null; // ou un indicateur de chargement, un message d'attente, etc.
+		return null;
 	}
 	const totalPages = Math.ceil(data.length / itemsPerPage);
 
@@ -44,6 +50,7 @@ export const SuggestedRecipes: FC = () => {
 	const startIndex = (currentPage - 1) * itemsPerPage;
 	const endIndex = startIndex + itemsPerPage;
 	const paginatedData = data.slice(startIndex, endIndex);
+	console.log(paginatedData);
 
 	return (
 		<>
@@ -65,34 +72,20 @@ export const SuggestedRecipes: FC = () => {
 				</PaginationContainer>
 			</Container>
 			<ContainerListSuggested>
-				{paginatedData.map(
-					(recipes: {
-						sourceUrl: string | undefined;
-						title: string;
-						readyInMinutes: number;
-						id: number;
-					}) => {
-						return (
-							<RecipesCard key={recipes.id}>
-								<ImageRecipes src={recipes.sourceUrl} />
-								<TitleRecipes>{recipes.title}</TitleRecipes>
-								<EllipsisRecipesBox>
-									<DescriptionRecipes>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-										Commodi hic, fugit a quasi ex ipsum nemo, cum doloribus
-										dicta nam tempora doloremque odit reiciendis iure nesciunt
-										porro. Laboriosam, facere illo?
-									</DescriptionRecipes>
-								</EllipsisRecipesBox>
-								<Separator />
-								<Icon>
-									<AiOutlineDashboard />
-								</Icon>
-								<TimesRecipes>{recipes.readyInMinutes} min</TimesRecipes>
-							</RecipesCard>
-						);
-					}
-				)}
+				{paginatedData.map((recipes) => (
+					<RecipesCard key={recipes.id}>
+						<ImageRecipes src={recipes.image} />
+						<TitleRecipes>{recipes.title}</TitleRecipes>
+						<EllipsisRecipesBox>
+							<DescriptionRecipes></DescriptionRecipes>
+						</EllipsisRecipesBox>
+						<Separator />
+						<Icon>
+							<AiOutlineDashboard />
+						</Icon>
+						<TimesRecipes>{recipes.readyInMinutes} min</TimesRecipes>
+					</RecipesCard>
+				))}
 			</ContainerListSuggested>
 		</>
 	);

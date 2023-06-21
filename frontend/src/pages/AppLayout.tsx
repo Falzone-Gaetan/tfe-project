@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { NavBar, Header, Dashboard, Bookmark } from '../components';
+import { NavBar, Header, DiscoverRecipes, Bookmark } from '../components';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { ComponentContent, Container, MainContent, Sidebar } from './style';
 
@@ -12,20 +12,17 @@ export const AppLayout = () => {
 		// Mettre à jour le titre de la page en fonction de la route actuelle
 		let pageTitle = '';
 		switch (location.pathname) {
-			case '/dashboard':
-				pageTitle = 'Dashboard';
+			case '/Home/discoverRecipes':
+				pageTitle = 'Discover Recipes';
 				break;
-			case '/myrecipes':
+			case '/Home/myrecipes':
 				pageTitle = 'My Recipes';
 				break;
-			case '/myaccount':
-				pageTitle = 'My Account';
-				break;
-			case '/logout':
-				pageTitle = 'Log Out';
+			case '/Home/myaccount':
+				pageTitle = 'Account';
 				break;
 			default:
-				pageTitle = 'Dashboard';
+				pageTitle = 'Discover Recipes';
 		}
 
 		setPageTitle(pageTitle);
@@ -44,9 +41,9 @@ export const AppLayout = () => {
 					<Routes>
 						<Route
 							path='/'
-							element={<Navigate to='/Home/dashboard' replace />}
+							element={<Navigate to='/Home/discoverRecipes' replace />}
 						/>
-						<Route path='/dashboard' element={<Dashboard />} />
+						<Route path='/discoverRecipes' element={<DiscoverRecipes />} />
 						<Route path='/myrecipes' element={<Bookmark />} />
 					</Routes>
 				</ComponentContent>

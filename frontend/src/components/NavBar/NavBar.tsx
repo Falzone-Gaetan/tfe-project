@@ -19,8 +19,18 @@ export const NavBar: FC = () => {
 	const [activeItem, setActiveItem] = useState<null | string>(null);
 	useEffect(() => {
 		// Vérifier si l'emplacement actuel correspond à la page d'accueil
-		if (location.pathname === '/Home/dashboard') {
-			setActiveItem('dashboard'); // Définir l'élément actif sur le Dashboard
+		switch (location.pathname) {
+			case '/Home/discoverRecipes':
+				setActiveItem('discoverRecipes');
+				break;
+			case '/Home/myrecipes':
+				setActiveItem('myrecipes');
+				break;
+			case '/Home/myaccount':
+				setActiveItem('myaccount');
+				break;
+			default:
+				setActiveItem('discoverRecipes');
 		}
 	}, [location.pathname]);
 
@@ -32,17 +42,17 @@ export const NavBar: FC = () => {
 			<NavigationList>
 				<NavigationItem>Menu</NavigationItem>
 				<NavigationItem
-					className={activeItem === 'dashboard' ? 'active' : ''}
-					onClick={() => handleItemClick('dashboard')}
+					className={activeItem === 'discoverRecipes' ? 'active' : ''}
+					onClick={() => handleItemClick('discoverRecipes')}
 				>
 					<NavigationLink
-						to='/Home/dashboard'
-						className={activeItem === 'dashboard' ? 'active' : ''}
+						to='/Home/discoverRecipes'
+						className={activeItem === 'discoverRecipes' ? 'active' : ''}
 					>
 						<NavigationIcon>
 							<AiOutlineDashboard />
 						</NavigationIcon>
-						Dashboard
+						Discover Recipes
 					</NavigationLink>
 				</NavigationItem>
 				<NavigationItem
@@ -78,7 +88,7 @@ export const NavBar: FC = () => {
 					onClick={() => handleItemClick('logout')}
 				>
 					<NavigationLink
-						to='/logout'
+						to='/'
 						className={activeItem === 'logout' ? 'active' : ''}
 					>
 						<NavigationIcon>

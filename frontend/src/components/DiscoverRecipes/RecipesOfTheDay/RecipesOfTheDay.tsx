@@ -36,7 +36,7 @@ export const RecipesOfTheDay: FC = () => {
 			<ContainerBookmark>
 				<Icon></Icon>
 				<Box p={4}> You have 3 new recipes in your bookmark</Box>
-				<LinkBookmark to='/myrecipes'>See Bookmark</LinkBookmark>
+				<LinkBookmark to='/Home/myrecipes'>See Bookmark</LinkBookmark>
 			</ContainerBookmark>
 		</Container>
 	);

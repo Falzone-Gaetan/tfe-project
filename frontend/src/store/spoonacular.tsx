@@ -1,6 +1,17 @@
 // api.js
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+interface Recipe {
+	id: number;
+	title: string;
+	readyInMinutes: number;
+	image: string;
+	imageUrls: string[];
+}
+
+interface SimilarData {
+	recipeId: number;
+}
 
 // Créer une instance de l'API
 export const api = createApi({
@@ -13,15 +24,18 @@ export const api = createApi({
 		},
 	}),
 	endpoints: (builder) => ({
-		getSimilarRecipes: builder.query({
-			query: (recipeId) => `/${recipeId}/similar`,
+		getSimilarRecipes: builder.query<Recipe[], SimilarData>({
+			query: ({ recipeId }) => `/${recipeId}/similar`,
 		}),
 		// Ajoutez d'autres endpoints
 		getRandomRecipes: builder.query({
 			query: () => '/random',
 		}),
-		getRecipesCategory: builder.query({
-			query: (type) => `complexSearch/${type}`,
+		getRecipesInformation: builder.query({
+			query: (recipeId) => `${recipeId}/information`,
+		}),
+		getRecipesSummary: builder.query({
+			query: (recipeId) => `${recipeId}/summary`,
 		}),
 	}),
 });
@@ -30,5 +44,6 @@ export const api = createApi({
 export const {
 	useGetSimilarRecipesQuery,
 	useGetRandomRecipesQuery,
-	useGetRecipesCategoryQuery,
+	useGetRecipesInformationQuery,
+	useGetRecipesSummaryQuery,
 } = api;

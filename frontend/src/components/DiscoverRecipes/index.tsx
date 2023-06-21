@@ -1,0 +1,1 @@
+export { DiscoverRecipes } from './DiscoverRecipes';
